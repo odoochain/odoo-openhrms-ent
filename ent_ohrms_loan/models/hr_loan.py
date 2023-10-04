@@ -105,7 +105,7 @@ class HrLoan(models.Model):
         ('approve', 'Approved'),
         ('refuse', 'Refused'),
         ('cancel', 'Canceled'),
-    ], string="State", default='draft', tracking=True, copy=False, )
+    ], string="State", default='draft', tracking=3, copy=False, )
 
     @api.model
     def create(self, values):

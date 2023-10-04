@@ -33,6 +33,7 @@ class HrEmployeeFamilyInfo(models.Model):
 
     _name = 'hr.employee.family'
     _description = 'HR Employee Family'
+    _inherit = ['mail.thread']
 
     employee_id = fields.Many2one('hr.employee', string="Employee",
                                   help='Select corresponding Employee',
@@ -41,7 +42,7 @@ class HrEmployeeFamilyInfo(models.Model):
                                   help="Relationship with the employee")
     member_name = fields.Char(string='Name')
     member_contact = fields.Char(string='Contact No')
-    birth_date = fields.Date(string="DOB")
+    birth_date = fields.Date(string="DOB",tracking=True)
 
 
 class HrEmployee(models.Model):
