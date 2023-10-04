@@ -41,7 +41,7 @@ class HrEmployeeFamilyInfo(models.Model):
                                   help="Relationship with the employee")
     member_name = fields.Char(string='Name')
     member_contact = fields.Char(string='Contact No')
-    birth_date = fields.Date(string="DOB", tracking=True)
+    birth_date = fields.Date(string="DOB")
 
 
 class HrEmployee(models.Model):
@@ -95,7 +95,7 @@ class HrEmployee(models.Model):
         string='Expiry Date',
         help='Expiry date of Identification ID')
     passport_expiry_date = fields.Date(
-        string='Expiry Date',
+        string='Passport ExpiryDate',
         help='Expiry date of Passport ID')
     id_attachment_id = fields.Many2many(
         'ir.attachment', 'id_attachment_rel',
@@ -106,7 +106,7 @@ class HrEmployee(models.Model):
         'ir.attachment',
         'passport_attachment_rel',
         'passport_ref', 'attach_ref1',
-        string="Attachment",
+        string="Passport Attachment",
         help='You can attach the copy of Passport')
     fam_ids = fields.One2many(
         'hr.employee.family', 'employee_id',

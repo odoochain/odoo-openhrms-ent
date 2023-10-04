@@ -78,7 +78,7 @@ class Employee(models.Model):
         cr.execute(query)
         leaves_this_month = cr.fetchall()
         leaves_alloc_req = self.env['hr.leave.allocation'].sudo().search_count(
-            [('state', 'in', ['confirm', 'validate1'])])
+            [('state', 'in', ['confirm', 'validate'])])
         timesheet_count = self.env['account.analytic.line'].sudo().search_count(
             [('project_id', '!=', False), ('user_id', '=', uid)])
         timesheet_view_id = self.env.ref('hr_timesheet.hr_timesheet_line_search')
