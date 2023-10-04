@@ -35,14 +35,9 @@ class HrLoanAcc(models.Model):
     treasury_account_id = fields.Many2one('account.account', string="Treasury Account")
     journal_id = fields.Many2one('account.journal', string="Journal")
 
-    state = fields.Selection([
-        ('draft', 'Draft'),
-        ('waiting_approval_1', 'Submitted'),
+    state = fields.Selection(selection_add=[
         ('waiting_approval_2', 'Waiting Approval'),
-        ('approve', 'Approved'),
-        ('refuse', 'Refused'),
-        ('cancel', 'Canceled'),
-    ], string="State", default='draft', tracking='onchange', copy=False, )
+    ])
 
     def action_approve(self):
         """This create account move for request.
