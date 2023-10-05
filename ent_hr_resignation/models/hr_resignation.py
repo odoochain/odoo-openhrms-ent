@@ -33,6 +33,7 @@ class HrResignation(models.Model):
     _name = 'hr.resignation'
     _inherit = 'mail.thread'
     _rec_name = 'employee_id'
+    _description = 'Hr Resignation'
 
     name = fields.Char(string='Order Reference', required=True, copy=False, readonly=True, index=True,
                        default=lambda self: _('New'))
