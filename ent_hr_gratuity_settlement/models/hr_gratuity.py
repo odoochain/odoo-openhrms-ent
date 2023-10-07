@@ -92,7 +92,7 @@ class EmployeeGratuity(models.Model):
             contract_sorted = contract_ids.sorted(lambda line: line.date_start)
             if not contract_sorted:
                 raise UserError(_('No contracts found for the selected employee...!\n'
-                                'Employee must have at least one contract to compute gratuity settelement.'))
+                                  'Employee must have at least one contract to compute gratuity settelement.'))
             self.employee_joining_date = joining_date = contract_sorted[0].date_start
             employee_probation_days = 0
             # find total probation days
@@ -179,7 +179,7 @@ class EmployeeGratuity(models.Model):
                     self.employee_gratuity_amount = round(employee_gratuity_amount, 2)
                 else:
                     raise UserError(_("Employee working days is not configured in "
-                                    "the gratuity configuration..!"))
+                                      "the gratuity configuration..!"))
             elif self.employee_gratuity_duration and self.wage_type == 'monthly':
                 if self.employee_gratuity_duration.employee_daily_wage_days != 0:
                     daily_wage = self.employee_basic_salary / self.employee_gratuity_duration.employee_daily_wage_days
@@ -189,7 +189,7 @@ class EmployeeGratuity(models.Model):
                     self.employee_gratuity_amount = round(employee_gratuity_amount, 2)
                 else:
                     raise UserError(_("Employee wage days is not configured in "
-                                    "the gratuity configuration..!"))
+                                      "the gratuity configuration..!"))
 
     # Changing state to submit
     def submit_request(self):
@@ -244,7 +244,7 @@ class EmployeeContractWage(models.Model):
 
     # structure_type_id = fields.Many2one('hr.payroll.structure.type', string="Salary Structure Type")
     company_country_id = fields.Many2one('res.country', string="Company country", related='company_id.country_id',
-                            readonly=True)
-    wage_type = fields.Selection([('monthly', 'Monthly Fixed Wage'), ('hourly', 'Hourly Wage')])
-    hourly_wage = fields.Monetary('Hourly Wage', digits=(16, 2), default=0, required=True, tracking=True,
-                                  help="Employee's hourly gross wage.")
+                                         readonly=True)
+    wage_type = fields.Selection(related='structure_type_id.wage_type')
+    hourly_wage = fields.Float('Hourly Wage', digits=(16, 2), default=0, required=True, tracking=True,
+                               help="Employee's hourly gross wage.")
