@@ -30,10 +30,10 @@ class HrEmployeeContract(models.Model):
                                      string="Shift Schedule",
                                      help="Shift schedule")
     working_hours = fields.Many2one('resource.calendar',
-                                    string='Working Schedule',
+                                    string='Working Shift Schedule',
                                     help="Working hours")
     department_id = fields.Many2one('hr.department',
-                                    string="Department",
+                                    string="Department ID",
                                     help="Department",
                                     required=True)
 
@@ -69,7 +69,7 @@ class HrSchedule(models.Model):
             }
         }
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         self._check_overlap(vals)
         return super(HrSchedule, self).create(vals)

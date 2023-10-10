@@ -21,7 +21,7 @@
 ########################################################################################
 {
     'name': "Enterprise Open HRMS Employee Shift",
-    'version': '16.0.1.0.0',
+    'version': '16.0.1.0.1',
     'summary': """Easily create, manage, and track employee shift schedules.""",
     'description': """Easily create, manage, and track employee shift schedules.""",
     'live_test_url': 'https://youtu.be/o580wqD9Nig',

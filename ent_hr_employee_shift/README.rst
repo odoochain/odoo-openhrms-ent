@@ -3,6 +3,8 @@ Enterprise Open HRMS Employee Shift v16
 
 Easily create, manage, and track employee shift schedules
 
+轻松创建，管理和跟踪员工轮班时间表
+
 Depends
 =======
 [hr] addon Odoo

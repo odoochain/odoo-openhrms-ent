@@ -199,8 +199,8 @@ class HrLeave(models.Model):
             'name': _('Approvals'),
             'res_id': self.id,
             'target': 'current',
-            'create': False,
-            'edit': False,
+            # 'create': False,
+            # 'edit': False,
         }
         return value
 
@@ -265,6 +265,8 @@ class HrLeaveValidators(models.Model):
 class LeaveValidationStatus(models.Model):
     """ Model for leave validators and their status for each leave request """
     _name = 'leave.validation.status'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = 'Leave Validation'
 
     holiday_status = fields.Many2one('hr.leave')
 

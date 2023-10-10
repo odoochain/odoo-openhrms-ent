@@ -27,7 +27,7 @@ class HrEmployeeInherited(models.Model):
     _inherit = 'hr.employee'
 
     resource_calendar_ids = fields.\
-        Many2one('resource.calendar', 'Working Hours')
+        Many2one('resource.calendar', 'Working Calendar')
 
 
 class HrEmployeeShift(models.Model):
@@ -49,7 +49,7 @@ class HrEmployeeShift(models.Model):
 
     color = fields.Integer(string='Color Index', help="Color")
     hr_department = fields.Many2one('hr.department', string="Department",
-                                    required=True, help="Department")
+                                    required=False, help="Department")
     sequence = fields.Integer(string="Sequence", required=True, default=1,
                               help="Sequence")
     attendance_ids = fields.One2many(
