@@ -144,7 +144,7 @@ class HrEmployeeDocument(models.Model):
     employee_ref = fields.Many2one('hr.employee', invisible=1, copy=False)
     doc_attachment_id = fields.Many2many('ir.attachment', 'doc_attach_rel',
                                          'doc_id', 'attach_id3',
-                                         string="Attachment",
+                                         string="Doc Attachment",
                                          help='You can attach the copy of your document',
                                          copy=False)
     issue_date = fields.Date(string='Issue Date', default=fields.datetime.now(),
@@ -204,7 +204,7 @@ class HrEmployeeAttachment(models.Model):
     doc_attach_rel = fields.Many2many('hr.employee.document',
                                       'doc_attachment_id', 'attach_id3',
                                       'doc_id',
-                                      string="Attachment", invisible=1)
+                                      string="Doc Attachment", invisible=1)
     attach_rel = fields.Many2many('hr.document', 'attach_id', 'attachment_id3',
                                   'document_id',
-                                  string="Attachment", invisible=1)
+                                  string="Attachment Rel", invisible=1)
