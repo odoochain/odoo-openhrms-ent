@@ -88,7 +88,7 @@ class DisciplinaryAction(models.Model):
     joined_date = fields.Date(string="Joined Date", help="Employee joining date")
 
     # assigning the sequence for the record
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('disciplinary.action')
         return super(DisciplinaryAction, self).create(vals)

@@ -93,7 +93,7 @@ class SalaryAdvancePayment(models.Model):
     def reject(self):
         self.state = 'reject'
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].get('salary.advance.seq') or ' '
         res_id = super(SalaryAdvancePayment, self).create(vals)

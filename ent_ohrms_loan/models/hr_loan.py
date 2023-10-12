@@ -107,7 +107,7 @@ class HrLoan(models.Model):
         ('cancel', 'Canceled'),
     ], string="State", default='draft', tracking=3, copy=False, )
 
-    @api.model
+    @api.model_create_multi
     def create(self, values):
         """creates a new HR loan record with the provided values."""
         loan_count = self.env['hr.loan'].search_count(

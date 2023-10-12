@@ -68,7 +68,7 @@ class Probation(models.Model):
             self.write({'state': 'open',
                         'is_approve': False})
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals_list):
         """
         function for create a record based on probation

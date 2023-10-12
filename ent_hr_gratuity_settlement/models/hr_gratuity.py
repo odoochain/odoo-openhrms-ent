@@ -75,7 +75,7 @@ class EmployeeGratuity(models.Model):
     currency_id = fields.Many2one(related="company_id.currency_id",
                                   string="Currency", readonly=True, help="Currency")
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         """ assigning the sequence for the record """
         vals['name'] = self.env['ir.sequence'].next_by_code('hr.gratuity')
