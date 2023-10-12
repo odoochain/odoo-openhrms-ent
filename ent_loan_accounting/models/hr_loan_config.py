@@ -34,11 +34,9 @@ class AccConfig(models.TransientModel):
         res.update(
             loan_approve=self.env['ir.config_parameter'].sudo().get_param('account.loan_approve')
         )
-        print(res,'resssssss')
+        # print(res,'resssssss')
         return res
 
-    
     def set_values(self):
         super(AccConfig, self).set_values()
         self.env['ir.config_parameter'].sudo().set_param('account.loan_approve', self.loan_approve)
-

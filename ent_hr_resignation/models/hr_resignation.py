@@ -76,7 +76,7 @@ class HrResignation(models.Model):
     def set_join_date(self):
         self.joined_date = self.employee_id.joining_date
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         # assigning the sequence for the record
         if vals.get('name', _('New')) == _('New'):

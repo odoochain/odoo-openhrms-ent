@@ -130,7 +130,7 @@ class EmployeeTransfer(models.Model):
     def cancel_transfer(self):
         self.state = 'cancel'
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         vals['name'] = "Transfer: " + self.env['hr.employee'].browse(
             vals['employee_id']).name

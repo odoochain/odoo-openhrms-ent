@@ -73,7 +73,7 @@ class HrAnnouncementTable(models.Model):
         if self.date_start > self.date_end:
             raise ValidationError("Start date must be less than End Date")
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         if vals.get('is_announcement'):
             vals['name'] = self.env['ir.sequence'].next_by_code('hr.announcement.general')
