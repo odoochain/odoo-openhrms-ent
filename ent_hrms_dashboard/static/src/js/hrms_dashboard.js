@@ -50,7 +50,6 @@ var HrDashboard = AbstractAction.extend({
              'click .hr_job_application_approve': 'job_applications_to_approve',
              'click .leaves_request_today':'leaves_request_today',
              'click .leaves_request_month':'leaves_request_month',
-             'click .hr_payslip':'hr_payslip',
              'click .hr_contract':'hr_contract',
              'click .hr_timesheets': 'hr_timesheets',
              'click .login_broad_factor': 'employee_broad_factor',

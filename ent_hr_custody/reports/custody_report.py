@@ -33,7 +33,7 @@ class CustodyHistory(models.Model):
     purpose = fields.Char(string='Reason')
     custody_name = fields.Many2one('custody.property', string='Property Name')
     return_date = fields.Date(string='Return Date')
-    renew_date = fields.Date(string='Renewal Return Date')
+    renew_date = fields.Date(string='Renewal Date')
     renew_return_date = fields.Boolean(string='Renewal Return Date')
     state = fields.Selection([('draft', 'Draft'),
                               ('to_approve', 'Waiting For Approval'),

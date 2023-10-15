@@ -1,6 +1,6 @@
 odoo.define('ent_hr_company_policy.CompanyPolicy', function (require) {
 "use strict";
-console.log('deyyyyyyyyyy')
+// console.log('deyyyyyyyyyy')
 var HrDashboard = require('hrms_dashboard.DashboardRewrite');
 var AbstractAction = require('web.AbstractAction');
 var core = require('web.core');
