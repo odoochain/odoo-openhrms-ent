@@ -44,7 +44,8 @@ class EmployeeInsurance(models.Model):
                           default=str(datetime.now() + relativedelta.relativedelta(months=+1, day=1, days=-1))[:10])
     state = fields.Selection([('active', 'Active'),
                               ('expired', 'Expired'), ],
-                             default='active', string="State", compute='get_status')
+                             default='active', string="State", compute='get_status',
+                             index=True, store=True)
     company_id = fields.Many2one('res.company', string='Company', required=True, help="Company",
                                  default=lambda self: self.env.user.company_id)
 
