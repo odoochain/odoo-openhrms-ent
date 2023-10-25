@@ -37,7 +37,7 @@ class HrLeave(models.Model):
         help="If checked then multi-level approval is necessary")
     button_visibility = fields.Boolean(default=True,
                                        compute='_get_current_user_details',
-                                       string='Multiple Level Approval')
+                                       string='Multiple Level Button')
 
     def action_approve(self):
         """ Check if any pending tasks is added if so reassign the pending
@@ -226,13 +226,13 @@ class HrLeaveTypes(models.Model):
     _inherit = 'hr.leave.type'
 
     multi_level_validation = fields.Boolean(
-        string='Multiple Level Approval',
+        string='Multiple Level Valid',
         help="If checked then multi-level approval is necessary")
     leave_validation_type = fields.Selection(
         selection_add=[('multi', 'Multi Level Approval')])
     leave_validators = fields.One2many('hr.holidays.validators',
                                        'hr_holiday_status',
-                                       string='Leave Validators',
+                                       string='Leave Validators Type',
                                        help="Leave validators")
 
     @api.onchange('leave_validation_type')

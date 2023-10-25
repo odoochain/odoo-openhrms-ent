@@ -4,3 +4,6 @@
 #### Version 16.0.1.0.0
 ##### ADD
 - Initial commit for Enterprise HRMS Dashboard
+
+#### 16.0.1.0.1
+- 修复dash-title,避免mb-0与web中的mb-0冲突,导致knowledge等模块不正常显示标题
