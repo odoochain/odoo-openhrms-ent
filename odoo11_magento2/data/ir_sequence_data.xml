@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--Sequence for the model website.magento-->
+        <record id="magento_website_sequence" model="ir.sequence">
+            <field name="name">Website Number</field>
+            <field name="code">website.magento</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">WN/</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">standard</field>
+        </record>
+        <!--Sequence for the model stores.magento-->
+        <record id="magento_stores_sequence" model="ir.sequence">
+            <field name="name">Store Number</field>
+            <field name="code">stores.magento</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">SN/</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">standard</field>
+        </record>
+        <!--Sequence for the model shipment.shipment-->
+        <record id="magento_shipment_sequence" model="ir.sequence">
+            <field name="name">Shipping Number</field>
+            <field name="code">shipment.shipment</field>
+            <field name="active">TRUE</field>
+            <field name="prefix">SH.NO/</field>
+            <field name="padding">6</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">standard</field>
+        </record>
+    </data>
+</odoo>

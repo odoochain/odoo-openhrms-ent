@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Form view of the model credit.notes.fetch.wizard-->
+    <record id="credit_notes_fetch_wizard_view_form" model="ir.ui.view">
+        <field name="name">credit.notes.fetch.wizard.view.form</field>
+        <field name="model">credit.notes.fetch.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <p>The operation may take some time to complete. It depends
+                        on the number of records.
+                        Please wait patiently.
+                    </p>
+                    <footer>
+                        <button string='Fetch Credit Notes'
+                                name="fetch_credit_notes"
+                                type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default"
+                                special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--Windows action for the model credit.notes.fetch.wizard-->
+    <record id="credit_notes_fetch_wizard_action" model="ir.actions.act_window">
+        <field name="name">Fetch Credit Notes</field>
+        <field name="res_model">credit.notes.fetch.wizard</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'form', 'view_id': ref('credit_notes_fetch_wizard_view_form')})]"/>
+    </record>
+</odoo>

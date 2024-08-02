@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Tree view of the model stores.magento-->
+    <record id="stores_magento_view_tree" model="ir.ui.view">
+        <field name="name">stores.magento.view.tree</field>
+        <field name="model">stores.magento</field>
+        <field name="arch" type="xml">
+            <tree string="Magento Website">
+                <field name="store_name"/>
+                <field name="store_code"/>
+                <field name="default_website"/>
+            </tree>
+        </field>
+    </record>
+    <!--Form view of the model stores.magento-->
+    <record id="stores_magento_view_form" model="ir.ui.view">
+        <field name="name">stores.magento.view.form</field>
+        <field name="model">stores.magento</field>
+        <field name="arch" type="xml">
+            <form string="Magento Stores From">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="store_name"/>
+                            <field name="store_code"/>
+                        </group>
+                        <group>
+                            <field name="default_website"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!--Windows action for the model stores.magento-->
+    <record id="stores_magento_action" model="ir.actions.act_window">
+        <field name="name">Magento Stores</field>
+        <field name="res_model">stores.magento</field>
+        <field name="view_mode">kanban,tree,form,pivot</field>
+        <field name="view_id" ref="odoo11_magento2.stores_magento_view_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_no content_create">
+                Click to create a Magento Stores
+            </p>
+        </field>
+    </record>
+</odoo>

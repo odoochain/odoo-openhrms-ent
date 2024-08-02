@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Inherited form view of the model product template-->
+    <record id="product_template_only_form_view" model="ir.ui.view">
+        <field name="name">product.template.view.form.inherit.odoo11.magento2
+        </field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="magento_categ_ids" widget="many2many_tags"/>
+                <field name="magento_id" readonly="1"/>
+                <field name="custom_option" invisible="1"/>
+            </field>
+        </field>
+    </record>
+    <!--Inherited tree view of the model product.template-->
+    <record id="product_template_tree_view" model="ir.ui.view">
+        <field name="name">product.template.view.tree.inherit.odoo11.magento2
+        </field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="image_1920" widget="image" class="oe_avatar"
+                       options="{'preview_image': 'image_128'}"/>
+            </field>
+        </field>
+    </record>
+    <!--Inherited form view of the modle product product-->
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.view.form.inherit.odoo11.magento2
+        </field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="magento_categ_ids" widget="many2many_tags"/>
+                <field name="magento_id" readonly="1"/>
+                <field name="custom_option" invisible="1"/>
+            </field>
+        </field>
+    </record>
+    <!--Magento product attribute windows-->
+    <record id="magento_product_attribute_action"
+            model="ir.actions.act_window">
+        <field name="name">Attributes</field>
+        <field name="res_model">product.attribute</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="product.attribute_tree_view"/>
+        <field name="domain">[('magento','=','True')]</field>
+        <field name="help" type="html">
+            <p class="oe_view_no content_create">
+                Click to create Attribute.
+            </p>
+        </field>
+    </record>
+    <!--Magento product category action-->
+    <record id="magento_categories_action" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">product.category</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="product.product_category_search_view"/>
+        <field name="domain">[('magento','=','True')]</field>
+        <field name="help" type="html">
+            <p class="oe_view_no content_create">
+                Click to create a Category.
+            </p>
+        </field>
+    </record>
+    <!--Magento product template action-->
+    <record id="magento_product_action" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="product.product_template_tree_view"/>
+        <field name="domain">[('magento','=','True')]</field>
+        <field name="help" type="html">
+            <p class="oe_view_no content_create">
+                Click to create a Product.
+            </p>
+        </field>
+    </record>
+    <!--Magento product product action-->
+    <record id="magento_product_variants_action"
+            model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="product.product_product_tree_view"/>
+        <field name="domain">[('magento','=','True')]</field>
+        <field name="help" type="html">
+            <p class="oe_view_no content_create">
+                Click to create a Product.
+            </p>
+        </field>
+    </record>
+</odoo>

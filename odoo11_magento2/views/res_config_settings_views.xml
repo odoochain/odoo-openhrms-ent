@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Inherited form view of the model res config settings-->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">
+            res.config.settings.view.form.inherit.odoo11.magento2
+        </field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="11"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form[hasclass('oe_form_configuration')]"
+                   position="inside">
+                <app data-string="Magento" string="Magento"
+                     name="odoo11_magento2"
+                     logo="/odoo11_magento2/static/description/icon.png">
+                    <block title="API Key" name="magento_container">
+                        <setting string="Access Token"
+                                 help="Access Token of the Magento Account"
+                                 id="magento_access_token">
+                            <field name="access_token"
+                                   placeholder="Enter Access Token"
+                                   field_id="access_token_0"/>
+                        </setting>
+                        <setting string="Magento Host"
+                                 help="Host name of the Magento account"
+                                 id="magento_host_name">
+                            <field name="magento_host"
+                                   placeholder="Enter Magento Host Name"
+                                   field_id="magento_host_0"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+    <!--Magento settings windows action-->
+    <record id="magento_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'odoo11_magento2'}</field>
+    </record>
+</odoo>

@@ -1,0 +1,192 @@
+.o_action_manager {
+  direction: ltr;
+  webkit-box-flex: 1;
+  webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  overflow: scroll !important;
+}
+.col-sm-4 {
+    margin-bottom: 20px; /* Add space between columns */
+}
+.activity-dashboard-card__icon-container {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.my_activity {
+  background-color: #229db9;
+  border-radius: 10px;
+  font-size: 35px;
+}
+.all_activity{
+    background: #88dfdf;
+    border-radius: 10px;
+    font-size: 35px;
+}
+.planned_activity {
+  background-color: #e8c5ac;
+  border-radius: 10px;
+  font-size: 35px;
+}
+.completed_activity{
+    background: #a7a1f4;;
+    border-radius: 10px;
+    font-size: 35px;
+}
+
+.today_activity{
+    background: #f3bdf4;
+    border-radius: 10px;
+    font-size: 35px;
+}
+.overdue_activity {
+  background-color: #a2d2fb;
+  border-radius: 10px;
+  font-size: 35px;
+}
+.cancelled_activity{
+    background: #beeecc;
+    border-radius: 10px;
+    font-size: 35px;
+}
+.activity_type {
+  background-color: #ecb9b9;;
+  border-radius: 10px;
+  font-size: 35px;
+}
+.dashboard_main_section {
+  margin: 20px;
+}
+
+.activity-dashboard-card {
+    background-color: #990099;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    height: 110px;
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+#product-card {
+    background-color: #990099;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#product-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #a333d4;
+    animation: shake 0.5s ease-in-out;
+}
+#sale-card {
+    background-color: #0a8f7b;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#sale-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #3b8c80;
+    animation: shake 0.5s ease-in-out;
+}
+#invoiced-card {
+    background-color: #f0a000;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#invoiced-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #9e6e0e;
+    animation: shake 0.5s ease-in-out;
+}
+#shipment-card {
+    background-color: #3878c7;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#shipment-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #204d85;
+    animation: shake 0.5s ease-in-out;
+}
+#store-card {
+    background-color: #13d172;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#store-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #288054;
+    animation: shake 0.5s ease-in-out;
+}
+#amount-due-card {
+    background-color: #942b43;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#amount-due-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #cc7085;
+    animation: shake 0.5s ease-in-out;
+}
+#customer-card {
+    background-color: #5e33d4;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#customer-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #734fd6;
+    animation: shake 0.5s ease-in-out;
+}
+#credit-note-card {
+    background-color: #bb4fd6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+#credit-note-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #b109db;
+    animation: shake 0.5s ease-in-out;
+}
+.product-info {
+    display: flex;
+    align-items: center;
+    padding-left: 48px;
+}
+.product-count {
+    padding-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.icon {
+    color: white;
+    font-size: 30px;
+}
+.product-text {
+    color: white;
+    margin: 0;
+    margin-left: 10px;
+}
+.product-count-label {
+    font-size: initial;
+    color: aliceblue;
+}
+.product-count-value {
+    font-size: initial;
+    color: aliceblue;
+}

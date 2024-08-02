@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Created the category Magento to set the Groups -->
+    <record id="module_category_magento" model="ir.module.category">
+        <field name="name">Magento</field>
+        <field name="sequence">18</field>
+    </record>
+<!-- Created the Groups as user -->
+    <record id="group_magento_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_magento"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">The user will have access to view, no access to import/export.</field>
+    </record>
+<!-- Created the Groups as Manager -->
+    <record id="group_magento_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="comment">The manager will have an access to all import and export.</field>
+        <field name="category_id" ref="module_category_magento"/>
+        <field name="implied_ids" eval="[(4, ref('group_magento_user'))]"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+</odoo>
