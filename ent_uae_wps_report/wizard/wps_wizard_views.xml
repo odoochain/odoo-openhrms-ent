@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <data>
 <!--        Hr WPS Wizard view-->
         <record id="hr_wps_view_form" model="ir.ui.view">
             <field name="name">hr.wps.view.form</field>
@@ -46,5 +45,4 @@
                 action="hr_wps_action"
                 sequence="30"
                 groups="account.group_account_manager"/>
-    </data>
 </odoo>

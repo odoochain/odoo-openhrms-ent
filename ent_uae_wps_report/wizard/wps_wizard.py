@@ -98,7 +98,7 @@ class HrWps(models.TransientModel):
             end = str(self.end_date).split('-')
             if not start[1] == end[1]:
                 raise UserError(_('The Dates Can of Same Month Only'))
-        slips = self.env['wps.wizard'].get_data(self.start_date, self.end_date)
+        slips = self.get_data(self.start_date, self.end_date)
         if not slips:
             raise UserError(_('There are no payslip Created for the selected '
                               'month'))
@@ -126,7 +126,7 @@ class HrWps(models.TransientModel):
         }
         return {
             'type': 'ir.actions.report',
-            'data': {'model': 'wps.wizard',
+            'data': {'model': 'hr.wps',
                      'options': json.dumps(datas,
                                            default=date_utils.json_default),
                      'output_format': 'xlsx',
@@ -150,7 +150,6 @@ class HrWps(models.TransientModel):
                 slips_ids -= rec
             else:
                 emp_ids.append(rec.employee_id.id)
-
         if len(slips_ids) == 1:
             query = """select hr_employee.id,labour_card_number, 
             salary_card_number, agent_id, hr_payslip_line.amount, 
@@ -176,7 +175,6 @@ class HrWps(models.TransientModel):
         days = self.env['hr.payslip.worked_days'].search([('payslip_id', '=',
                                                            slip_id)])
         total_days = sum(rec.number_of_days for rec in days)
-
         return total_days
 
     def get_leaves(self, emp_id, start, end):
@@ -231,17 +229,17 @@ class HrWps(models.TransientModel):
             sheet.set_column(4, 4, 9)
             sheet.set_column(5, 5, 9)
             sheet.set_column(6, 6, 12)
-            sheet.write(count[0]+1, 0, 'EDR', format0)
-            sheet.write(count[0]+1, 1, count[1][1], format0)
-            sheet.write(count[0]+1, 2, count[1][3], format0)
-            sheet.write(count[0]+1, 3, count[1][2], format0)
-            sheet.write(count[0]+1, 4, lines['start_date'], format0)
-            sheet.write(count[0]+1, 5, lines['end_date'], format0)
-            sheet.write(count[0]+1, 6, str(int(days)).zfill(4), format0)
+            sheet.write(count[0] + 1, 0, 'EDR', format0)
+            sheet.write(count[0] + 1, 1, count[1][1], format0)
+            sheet.write(count[0] + 1, 2, count[1][3], format0)
+            sheet.write(count[0] + 1, 3, count[1][2], format0)
+            sheet.write(count[0] + 1, 4, lines['start_date'], format0)
+            sheet.write(count[0] + 1, 5, lines['end_date'], format0)
+            sheet.write(count[0] + 1, 6, str(int(days)).zfill(4), format0)
             v_sum += int(count[1][4])
-            sheet.write(count[0]+1, 7, count[1][4], format0)
-            sheet.write(count[0]+1, 8, '0.0000', format0)
-            sheet.write(count[0]+1, 9, leaves, format0)
+            sheet.write(count[0] + 1, 7, count[1][4], format0)
+            sheet.write(count[0] + 1, 8, '0.0000', format0)
+            sheet.write(count[0] + 1, 9, leaves, format0)
         count = count[0] + 2
         company = self.env.company
         sheet.set_column(1, 1, 14)
@@ -258,7 +256,7 @@ class HrWps(models.TransientModel):
         month_year = str(lines['end_date']).split('-')
         month_year = str(month_year[1]) + str(month_year[0])
         sheet.write(count, 5, month_year, format0)
-        sheet.write(count, 6, count-1, format0)
+        sheet.write(count, 6, count - 1, format0)
         sheet.write(count, 7, v_sum, format0)
         sheet.write(count, 8, 'AED', format0)
         workbook.close()

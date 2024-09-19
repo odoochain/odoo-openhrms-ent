@@ -21,14 +21,14 @@
 ########################################################################################
 {
     'name': 'Enterprise WPS Report Generation for UAE',
-    'version': '17.0.1.0.0',
+    'version': '17.0.1.0.1',
+    'category': 'Generic Modules/Human Resources',
     'summary': 'Open HRMS Wps Payroll System For UAE',
     'description': """The module helps to print the salary information file for 
     a month in XLS format.""",
-    'category': 'Generic Modules/Human Resources',
     'author': "Cybrosys Techno Solutions,Open HRMS",
-    'maintainer': 'Cybrosys Techno Solutions',
     'company': 'Cybrosys Techno Solutions',
+    'maintainer': 'Cybrosys Techno Solutions',
     'website': 'https://www.openhrms.com',
     'depends': [
         'hr_payroll',
