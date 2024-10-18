@@ -20,7 +20,7 @@
 #
 ########################################################################################
 from odoo import api, fields, models, _
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 
 class ServiceRequest(models.Model):
@@ -73,11 +73,12 @@ class ServiceRequest(models.Model):
                        readonly=True,
                        default=lambda self: _('New'))
 
-    @api.model
-    def create(self, vals):
-        """Sequence number"""
-        vals['name'] = self.env['ir.sequence'].next_by_code('service.request')
-        return super(ServiceRequest, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list): # ref https://github.com/OCA/OCB/blob/17.0/addons/point_of_sale/models/pos_order.py
+        for vals in vals_list:
+            if not vals.get('name'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('service.request')
+        return super(ServiceRequest, self).create(vals_list)
 
     @api.depends('read_only')
     def get_user(self):

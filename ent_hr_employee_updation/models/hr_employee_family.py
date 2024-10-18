@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models
+from odoo import api, fields, models, _
 
 GENDER_SELECTION = [('male', 'Male'),
                     ('female', 'Female'),
@@ -12,10 +12,12 @@ class HrEmployeeFamily(models.Model):
 
     _name = 'hr.employee.family'
     _description = 'HR Employee Family'
+    _inherit = ['mail.thread']
 
     employee_id = fields.Many2one(comodel_name='hr.employee', string="Employee",
                                   help='Select corresponding Employee',
-                                  invisible=1)
+                                  # invisible=True
+                                  )
     relation_id = fields.Many2one(comodel_name='hr.employee.relation',
                                   string="Relation",
                                   help="Relationship with the employee")

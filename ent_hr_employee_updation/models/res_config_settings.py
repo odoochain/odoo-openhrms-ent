@@ -28,7 +28,7 @@ class ResConfigSettings(models.TransientModel):
 
     notice_period = fields.Boolean(string='Notice Period',
                                    help="Provide Notice Period for Employees")
-    no_of_days = fields.Integer(strig="Notice period days",
+    no_of_days = fields.Integer(string="Notice period days",
                                 help="Number of Days of Notice Period")
 
     def set_values(self):
