@@ -27,22 +27,37 @@ class ResUsers(models.Model):
     """ Inherit res users for adding fields """
     _inherit = 'res.users'
 
-    employee_id = fields.Many2one(comodel_name='hr.employee',
-                                  string='Related Employee',
-                                  ondelete='restrict', auto_join=True,
-                                  help='Employee-related data of the user')
+    # employee_id = fields.Many2one(comodel_name='hr.employee',
+    #                               string='Related Employee',
+    #                               ondelete='restrict', auto_join=True,
+    #                               help='Employee-related data of the user')
 
-    @api.model
-    def create(self, vals):
+    # @api.model_create_multi
+    # def create(self, vals):
+    #     """ This code is to create an employee while creating a user. """
+    #     result = super(ResUsers, self).create(vals)
+    #     val = self.search([('share', '=', False)])
+    #     for record in val:
+    #         if result.id == record.id:
+    #             result['employee_id'] = self.env['hr.employee'].sudo().create(
+    #                 {
+    #                     'name': result['name'],
+    #                     'user_id': result['id'],
+    #                     'private_street': result['partner_id'].name
+    #                 })
+    #     return result
+
+    @api.model_create_multi
+    def create(self, vals_list):
         """ This code is to create an employee while creating a user. """
-        result = super(ResUsers, self).create(vals)
-        val = self.search([('share', '=', False)])
-        for record in val:
-            if result.id == record.id:
-                result['employee_id'] = self.env['hr.employee'].sudo().create(
-                    {
-                        'name': result['name'],
-                        'user_id': result['id'],
-                        'private_street': result['partner_id'].name
-                    })
-        return result
+        res = super(ResUsers, self).create(vals_list)
+        for user, vals in zip(res, vals_list):
+            if 'employee_id' not in vals:
+                employee_data = {
+                    'name': user.name,
+                    'company_id': user.company_id.id,
+                    'user_id': user.id,
+                    **self.env['hr.employee']._sync_user(user)
+                }
+                user.employee_id =self.env['hr.employee'].sudo().create(employee_data)
+        return res
