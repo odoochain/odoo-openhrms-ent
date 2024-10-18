@@ -35,9 +35,9 @@ class ResConfigSettings(models.TransientModel):
         """ Setting notice period days to config_settings """
         super(ResConfigSettings, self).set_values()
         self.env['ir.config_parameter'].sudo().set_param(
-            "hr_resignation.notice_period", self.notice_period)
+            "hr_resignation.notice_period", str(self.notice_period))
         self.env['ir.config_parameter'].sudo().set_param(
-            "hr_resignation.no_of_days", self.no_of_days)
+            "hr_resignation.no_of_days", str(self.no_of_days))
 
     @api.model
     def get_values(self):
